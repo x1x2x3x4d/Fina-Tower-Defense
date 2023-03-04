@@ -1,0 +1,53 @@
+
+
+local Addder = Instance.new("ScreenGui")
+local Alr = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Unit = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+
+
+Addder.Name = "Addder"
+Addder.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Addder.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Alr.Name = "Alr"
+Alr.Parent = Addder
+Alr.BackgroundColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Alr.Position = UDim2.new(0.262582064, 0, 0.173015878, 0)
+Alr.Size = UDim2.new(0, 470, 0, 368)
+Alr.Active = true
+Alr.Draggable = true
+
+UICorner.Parent = Alr
+
+Unit.Name = "Unit"
+Unit.Parent = Alr
+Unit.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
+Unit.Position = UDim2.new(0.187234044, 0, 0.263586938, 0)
+Unit.Size = UDim2.new(0, 294, 0, 50)
+Unit.Font = Enum.Font.ArialBold
+Unit.Text = ""
+Unit.TextColor3 = Color3.new(1, 1, 1)
+Unit.TextSize = 24
+
+TextButton.Parent = Alr
+TextButton.BackgroundColor3 = Color3.new(0.00784314, 0.00784314, 0.00784314)
+TextButton.Position = UDim2.new(0.287234038, 0, 0.491847813, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Font = Enum.Font.DenkOne
+TextButton.Text = "Add"
+TextButton.TextColor3 = Color3.new(1, 1, 1)
+TextButton.TextSize = 24
+TextButton.MouseButton1Down:Connect(function()
+	local args = {
+		[1] = "AddUnit",
+		[2] = Unit.Text,
+		[3] = 90
+	}
+
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ConfigureUnits"):FireServer(unpack(args))
+end)
+
+UICorner_2.Parent = TextButton
